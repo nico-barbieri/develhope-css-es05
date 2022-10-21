@@ -14,7 +14,9 @@
             <div class="burger-menu-icon-wrapper">
                 <img src="./images/burger-menu-open.png" alt="burger menu icon open">
             </div>
-            <h1>Navbar</h1>
+            <div class="title-container">
+                <h1>Navbar</h1>
+            </div>
             <div class="nav-links-container">
                 <div class="nav-link">
                     <a href="#">Home</a>
@@ -23,7 +25,7 @@
                     <a href="#">Link</a>
                 </div>
                 <div class="nav-link dropdown">
-                    <button type="button">Dropdown</button>
+                    <button type="button" id="dropdown-button">Dropdown ▼</button>
                     <div class="dropdown-menu">
                         <ul>
                             <li><a href="#">Link1</a></li>
@@ -32,14 +34,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="nav-link disabled">
-                    <a>Disabled</a>
+                <div class="nav-link">
+                    <a class="disabled">Disabled</a>
                 </div>
             </div>
             <div class="search-bar">
-                <label for="Search">
-                    <input type="text" name="Search" placeholder="Search">
-                    <button type="button">Search</button>
+                <label for="search" class="search">
+                    <input type="text" name="search" class="search-input" placeholder="Search">
+                    <button type="button" class="search-button" id="search-button">Search</button>
                 </label>
             </div>
         </nav>

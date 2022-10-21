@@ -1,3 +1,5 @@
+/* Basic settings */
+
 :root {
     --color1: rgb(254, 254, 254);
     --color2: rgb(34, 37, 41);
@@ -12,6 +14,15 @@
     font-family: Arial, Helvetica, sans-serif;
     list-style: none;
     text-decoration: none;
+    float: none;
+}
+
+button {
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    opacity: inherit;
+    cursor: pointer;
 }
 
 a {
@@ -27,49 +38,209 @@ img {
     width: 100%;
 }
 
+/* Navbar */
+
 .header-menu{
     width: 100vw;
-    height: auto;
-    display: flex;
 }
 
 nav {
     width: 100%;
-    padding: 1rem;
 
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: baseline; 
+    padding: 1ch 2ch 1ch 2ch;
+    gap: 2ch;
 
     background-color: var(--color2);
 }
 
+/* Navbar elements */
+
+/* Menu icon */
 .burger-menu-icon-wrapper {
     display: none;
     width: 1.5rem;
     margin: 1rem;
 }
 
-nav ul {
-    display: flex;
-}
-
-nav ul li {
-    display: inline;
-    margin-left: 2ch ;
-
+/* Navbar title */
+.title-container{
+    font-size: 1.4rem;
     color: var(--color1);
 }
 
-.dropdown-menu{
-    position: relative;
-    opacity: 0;
+/* Navbar links */
+.nav-links-container {
+    display: flex;
+    gap: 2ch;
+    height: 100%;
+    flex: 1;
+}
+
+.nav-link {
+    font-size: 1.3rem;
+    color: var(--color1);
+}
+
+/* Navbar links animation */
+.nav-link > * {
+    opacity: 75%;
     transition: ease-in-out .3s;
 }
-#dropdown:hover .dropdown-menu{
+
+.nav-link > *:hover,
+.nav-link > *:focus-within {
+    opacity: 100%;
+    transition: ease-in-out .3s;
+}
+
+/* Style of disabled links */
+.disabled {
+    cursor: default;
+    opacity: 33% !important;
+}
+
+/* Dropdown menu */
+.dropdown {
     position: relative;
-    display: flex;
+}
+.dropdown-menu{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 1ch);
+    width: calc(100%);
+    
+    font-size: 1.3rem;
+    color: var(--color1);
+    background-color: var(--color2);
+
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-1ch);
+    transition: ease-in-out .3s;
+}
+
+/* Dropdown menu links style */
+.dropdown-menu ul {
+    padding: 1ch;
+}
+
+.dropdown-menu ul li {
+    padding-bottom: 1ch;
+    padding-top: 1ch;
+    border-bottom: solid 1px var(--color1);
+}
+
+.dropdown-menu ul li:first-child {
+    padding-top: 0;
+}
+
+.dropdown-menu ul li:last-child {
+    padding-bottom: 0;
+    border: none;
+}
+
+/* Dropdown menu links animation */
+.dropdown-menu ul li a {
+    opacity: 75%;
+    transition: ease-in-out .3s;
+}
+.dropdown-menu ul li a:hover {
+    opacity: 100%;
+    transition: ease-in-out .3s;
+}
+
+/* Dropdown menu popup animation when button is clicked */
+.dropdown > #dropdown-button:focus-within + .dropdown-menu,
+.dropdown-menu:has(a:focus),
+.dropdown-menu:hover{
     opacity: 100;
-    flex-direction: column;
+    pointer-events: auto;
+    transform: translateY(0ch);
+    transition: ease-in-out .3s;
+}
+
+/* Searchbar */
+.search-bar {
+    font-size: 1.3rem;
+}
+.search {
+    display: flex;
+    gap: 1ch;
+}
+.search-button {
+    display: flex;
+    position: relative;
+    padding: 1ch;
+    border: solid 2px var(--color3);
+    border-radius: .5ch;
+    color: var(--color3);
+    transition: ease-in-out .3s;
+}
+
+.search-input {
+    background-color: var(--color1);
+    color: var(--color2);
+    font-size: inherit;
+    text-align: left;
+    padding-left: 1ch;
+
+    border: solid 2px rgb(0, 0, 0, .3);
+    border-radius: 0.5ch;
+    outline: solid 0px rgb(0, 0, 0, .3);
+
+    transition: ease-in-out.3s;
+}
+
+.search-input::placeholder{
+    color: rgb(0, 0, 0, .3);
+    transition: ease-in-out .3s;
+}
+
+/* Searchbar animation */
+.search-button::after{
+    content: "";
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 0%;
+
+    border-radius: 0.4ch 50% 50% 0.4ch;
+    border-top-right-radius: 50%;
+    border: solid 0px var(--color3);
+    background-color: var(--color3);
+    
+    transition: ease-in-out 0.3s;
+}
+.search-button:hover{
+    color: var(--color1);
+    z-index: 2;
+    transition: ease-in-out .3s;
+}
+.search-button:hover::after {
+    width: 100%;
+    border-radius: 0.3ch;
+    border: solid 1px var(--color3);
+    transition: ease-in-out 0.3s;
+
+    z-index: -1;
+}
+.search-input:hover {
+    border: solid 2px var(--color3);
+}
+.search-input:hover::placeholder{
+    color: var(--color3);
+    transition: ease-in-out .3s;
+}
+.search-input:focus-visible{
+    color: var(--color3);
+    outline: solid 2px var(--color3);
+    border: solid 2px var(--color3);
     transition: ease-in-out .3s;
 }
