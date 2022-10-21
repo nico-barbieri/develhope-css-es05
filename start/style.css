@@ -14,7 +14,6 @@
     font-family: Arial, Helvetica, sans-serif;
     list-style: none;
     text-decoration: none;
-    float: none;
 }
 
 button {
@@ -54,14 +53,18 @@ nav {
 
     background-color: var(--color2);
 }
+/* Adjust title and links height after "align-items:baseline" */
+.title-container, .nav-links-container {
+    transform: translateY(.3rem);
+}
 
 /* Navbar elements */
 
 /* Menu icon */
 .burger-menu-icon-wrapper {
     display: none;
-    width: 1.5rem;
-    margin: 1rem;
+    width: 3ch;
+    margin: 1ch;
 }
 
 /* Navbar title */
@@ -77,7 +80,6 @@ nav {
     height: 100%;
     flex: 1;
 }
-
 .nav-link {
     font-size: 1.3rem;
     color: var(--color1);
@@ -88,7 +90,6 @@ nav {
     opacity: 75%;
     transition: ease-in-out .3s;
 }
-
 .nav-link > *:hover,
 .nav-link > *:focus-within {
     opacity: 100%;
@@ -104,6 +105,7 @@ nav {
 /* Dropdown menu */
 .dropdown {
     position: relative;
+    white-space: nowrap;
 }
 .dropdown-menu{
     position: absolute;
@@ -125,17 +127,14 @@ nav {
 .dropdown-menu ul {
     padding: 1ch;
 }
-
 .dropdown-menu ul li {
     padding-bottom: 1ch;
     padding-top: 1ch;
     border-bottom: solid 1px var(--color1);
 }
-
 .dropdown-menu ul li:first-child {
     padding-top: 0;
 }
-
 .dropdown-menu ul li:last-child {
     padding-bottom: 0;
     border: none;
@@ -178,13 +177,13 @@ nav {
     color: var(--color3);
     transition: ease-in-out .3s;
 }
-
 .search-input {
     background-color: var(--color1);
     color: var(--color2);
     font-size: inherit;
     text-align: left;
     padding-left: 1ch;
+    width: 100%;
 
     border: solid 2px rgb(0, 0, 0, .3);
     border-radius: 0.5ch;
@@ -192,7 +191,6 @@ nav {
 
     transition: ease-in-out.3s;
 }
-
 .search-input::placeholder{
     color: rgb(0, 0, 0, .3);
     transition: ease-in-out .3s;
@@ -243,4 +241,18 @@ nav {
     outline: solid 2px var(--color3);
     border: solid 2px var(--color3);
     transition: ease-in-out .3s;
+}
+
+/* Responsive nav */
+@media screen and (max-width: 768px){
+    .burger-menu-icon-wrapper {
+        display: flex;
+    }
+    .title-container{
+        transform: translateY(0rem); /*Re-align title*/
+    }
+    .nav-links-container,
+    .search-bar {
+        display: none;
+    }
 }
